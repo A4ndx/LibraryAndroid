@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Biblioteca virtual UNIAJC</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Usuario</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Iniciar Sesión</string>
+    <string name="action_sign_in_short">Iniciar Sesión</string>
+    <string name="welcome">"Bienvenido !"</string>
+    <string name="invalid_username">No es un usuario valido</string>
+    <string name="invalid_password">La contraseña debe de tener >5 caracteress</string>
+    <string name="login_failed">"Inicio de sesión fallido"</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

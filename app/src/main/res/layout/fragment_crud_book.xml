@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Codigo de libro"
+                android:textAlignment = "textStart"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"/>
+            <AutoCompleteTextView
+                android:id="@+id/tIdBook"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:imeOptions="actionDone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ISBN"
+                android:textAlignment = "textStart"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"/>
+            <AutoCompleteTextView
+                android:id="@+id/tISBN"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:imeOptions="actionDone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Editorial"
+                android:textAlignment = "textStart"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"/>
+            <AutoCompleteTextView
+                android:id="@+id/tEditorial"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:imeOptions="actionDone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Año"
+                android:textAlignment = "textStart"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"/>
+            <AutoCompleteTextView
+                android:id="@+id/tAño"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:imeOptions="actionDone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Autor"
+                android:textAlignment = "textStart"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"/>
+            <AutoCompleteTextView
+                android:id="@+id/tAutor"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:imeOptions="actionDone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Area de conocimiento"
+                android:textAlignment = "textStart"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"/>
+            <AutoCompleteTextView
+                android:id="@+id/tArea"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:imeOptions="actionDone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cantidad"
+                android:textAlignment = "textStart"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"/>
+            <AutoCompleteTextView
+                android:id="@+id/tCant"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:imeOptions="actionDone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sede disponible"
+                android:textAlignment = "textStart"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"/>
+            <Spinner
+                android:id="@+id/sSede"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginBottom="16dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:imeOptions="actionDone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Novedades / Comentarios"
+                android:textAlignment = "textStart"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/tNews"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:imeOptions="actionDone"/>
+
+            <GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:alignmentMode="alignMargins"
+                android:columnCount="2"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <Button
+                    android:id="@+id/bt_insert"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Insertar"
+                    android:hint="Inserta usuarios"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/bt_consult"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Consultar"
+                    android:hint="Consulta por cedula"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/bt_mod"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Modificar"
+                    android:hint="Modifica por cedula"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/bt_delete"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Eliminar"
+                    android:hint="Elimina por cedula"
+                    android:textSize="15sp" />
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
