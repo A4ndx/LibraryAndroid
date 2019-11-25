@@ -13,6 +13,7 @@ class StudentsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_students)
         val logOut = findViewById<Button>(R.id.logOut)
+        val btScanQR = findViewById<Button>(R.id.bt_scanQR)
 
         val db = getDB(this)
         val cursor = db.rawQuery("select * from User", null)
@@ -20,6 +21,12 @@ class StudentsActivity : AppCompatActivity() {
             switchActivity()
             cursor.close()
             db.close()
+        }
+
+        btScanQR.setOnClickListener {
+            val intent = Intent(this, QRReaderActivity::class.java)
+            intent.putExtra("type",0)
+            startActivity(intent)
         }
 
         logOut.setOnClickListener {

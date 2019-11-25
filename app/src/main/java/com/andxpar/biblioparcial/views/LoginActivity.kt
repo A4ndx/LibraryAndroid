@@ -91,7 +91,7 @@ class LoginActivity : AppCompatActivity() {
                             cont++
                         }
 
-                        if (user.dni >= 0 && idUser >= 0) {
+                        if (user.dni > 1 && idUser >= 0 && user.name != "1") {
                             val db = getDB(this)
                             val values = ContentValues()
                             values.put("idUser", idUser)
