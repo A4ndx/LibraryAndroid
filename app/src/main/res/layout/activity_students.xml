@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.StudentsActivity">
+    tools:context=".views.StudentsActivity"
+    android:background="@drawable/gradiant">
 
     <Button
         android:id="@+id/logOut"
@@ -24,6 +25,7 @@
         android:text="BIENVENIDO ESTUDIANTE" />
 
     <Button
+        android:textSize="30sp"
         android:id="@+id/bt_scanQR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,6 +34,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView"
-        android:text="ESCANEAR QR"/>
+        android:text="ENTRAR"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

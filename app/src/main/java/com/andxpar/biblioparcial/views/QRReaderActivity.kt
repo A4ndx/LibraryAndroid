@@ -12,9 +12,8 @@ import com.andxpar.biblioparcial.data.getDB
 import kotlinx.android.synthetic.main.activity_qr_reader.*
 import org.json.JSONException
 import org.json.JSONObject
-
-
-
+import android.content.Intent
+import java.sql.SQLException
 
 class QRReaderActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
@@ -22,11 +21,35 @@ class QRReaderActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
     private var bookID = ""
     private var bookName = ""
     private var bookAuthor = ""
+    private var type = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qr_reader)
 
+        if (!intent.getStringExtra("id").isNullOrEmpty()) {
+            bookID = intent.getStringExtra("id")
+            bookName = intent.getStringExtra("name")
+            bookAuthor = intent.getStringExtra("author")
+        }
+        type = intent.getIntExtra("type", 3)
+        val tmp = if(type == 0) "bookEstudiante" else if(type == 1) "bookDocente" else "null"
+        val db = getDB(this)
+        try {
+            val cursor = db.rawQuery("select COUNT(*) from $tmp", null)
+            if (cursor.moveToFirst()) {
+                tvCant.text = cursor.getInt(0).toString()
+            }
+            cursor.close()
+        }catch (e: SQLException){
+            Log.d("ERROR", e.message)
+        }
+        db.close()
+
+        Log.d("JSON", bookID + bookName + bookAuthor)
+        this.tvId.text = bookID
+        this.tvName.text = bookName
+        this.tvAuthor.text = bookAuthor
         bt_scan.setOnClickListener {
             miScannerView = ZXingScannerView(this)
             setContentView(miScannerView)
@@ -38,48 +61,43 @@ class QRReaderActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
         }
 
         bt_save.setOnClickListener {
-            if (bookID.isNotBlank() && bookName.isNotBlank() && bookAuthor.isNotBlank()){
-                val type = intent.getIntExtra("type", 3)
-                if (type == 0){
+            if (bookID.isNotBlank() && bookName.isNotBlank() && bookAuthor.isNotBlank()) {
+                type = intent.getIntExtra("type", 3)
+                if (type == 0) {
                     val db = getDB(this)
+                    val values = ContentValues()
+                    values.put("codigo", bookID)
+                    values.put("nombre", bookName)
+                    values.put("autor", bookAuthor)
+                    db.insert("bookEstudiante", null, values)
                     val cursor = db.rawQuery("select COUNT(*) from bookEstudiante", null)
                     if (cursor.moveToFirst()) {
                         tvCant.text = cursor.getInt(0).toString()
-                        cursor.close()
-                        val values = ContentValues()
-                        values.put("codigo", bookID)
-                        values.put("nombre", bookName)
-                        values.put("autor", bookAuthor)
-                        db.insert("bookEstudiante", null, values)
-                        db.close()
-                    } else {
-                        cursor.close()
-                        db.close()
                     }
-                }
-                else if (type == 1){
+                    cursor.close()
+                    db.close()
+                } else if (type == 1) {
                     val db = getDB(this)
+                    val values = ContentValues()
+                    values.put("codigo", bookID)
+                    values.put("nombre", bookName)
+                    values.put("autor", bookAuthor)
+                    db.insert("bookDocente", null, values)
                     val cursor = db.rawQuery("select COUNT(*) from bookDocente", null)
                     if (cursor.moveToFirst()) {
                         tvCant.text = cursor.getInt(0).toString()
-                        cursor.close()
-                        val values = ContentValues()
-                        values.put("codigo", bookID)
-                        values.put("nombre", bookName)
-                        values.put("autor", bookAuthor)
-                        db.insert("bookDocente", null, values)
-                        db.close()
-                    } else {
-                        cursor.close()
-                        db.close()
                     }
-                }
-                else{
+                    cursor.close()
+                    db.close()
+                } else {
                     Log.d("ERROR", "ERROR NO DEBERIA DE APARECER ESTO..... WHAT THE HELL")
                 }
-            }
-            else{
-                Toast.makeText(this,"Por favor escanee un libro para poder prestarselo",Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(
+                    this,
+                    "Por favor escanee un libro para poder prestarselo",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
 
@@ -104,13 +122,17 @@ class QRReaderActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
             bookID = bookObject.getString("id")
             bookName = bookObject.getString("name")
             bookAuthor = bookObject.getString("author")
-        }catch (e:JSONException){
+        } catch (e: JSONException) {
             Log.d("TRY CATCH", e.message)
         }
 
-        Log.d("JSON", bookID + bookName + bookAuthor)
-        this.tvId.text = bookID
-        this.tvName.text = bookName
-        this.tvAuthor.text = bookAuthor
+        val i = Intent(this, QRReaderActivity::class.java)
+        i.putExtra("id", bookID)
+        i.putExtra("name", bookName)
+        i.putExtra("author", bookAuthor)
+        i.putExtra("type", type)
+        startActivity(i)
+
+        this.finish()
     }
 }
